@@ -11,6 +11,7 @@
       "@services/*": ["src/app/services/*"],
       "@constants/*": ["src/app/constants/*"],
       "@mappers/*": ["src/app/mappers/*"],
+      "@interceptors/*": ["src/app/interceptors/*"],
       "@environments/*": ["src/environments/*"]
     },
     "outDir": "./dist/out-tsc",
