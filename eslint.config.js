@@ -36,6 +36,7 @@ module.exports = tseslint.config(
       ],
       "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",
+      "@typescript-eslint/no-explicit-any": "off",
       "unused-imports/no-unused-vars": [
         "warn",
         {

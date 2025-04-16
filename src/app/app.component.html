@@ -1,1 +1,23 @@
-<h1>Teste</h1>
+<div class="login-section">
+  <input
+    type="text"
+    name="user"
+    id="user"
+    placeholder="Insert User"
+    [(ngModel)]="userName"
+  />
+
+  <button (click)="login()">Authenticate</button>
+</div>
+
+<div>
+  @if (isAuthenticated()) {
+  <span> Autenticado! </span>
+  }@else {
+  <span> Não autenticado! </span>
+  }
+</div>
+
+<div>
+  <button (click)="checkHeroi()">SOU HEROI</button>
+</div>
