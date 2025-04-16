@@ -1,4 +1,4 @@
-import { AuthReponse } from '@entities/login-request';
+import { AuthReponse } from '@entities/auth-request';
 
 export const authResponseMapper = (response: any): AuthReponse => {
   return {

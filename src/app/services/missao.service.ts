@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest, LoginResponse } from '@entities/login-request';
-import { catchError, map, Observable, take, tap, throwError } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { StorageService } from './storage.service';
-import { REFRESH_STORAGE_TOKEN, STORAGE_TOKEN } from '@constants/storage-token';
 import { AuthReponse, AuthRequest } from '@entities/auth-request';
 import { RefreshTokenRequest } from '@entities/refresh-request';
 import { loginResponseMapper } from '@mappers/login-mapper';
@@ -37,36 +36,10 @@ export class MissaoService {
 
     return this.httpClient
       .get<AuthReponse>(`${this.apiUrl}/me`, { headers: headersConfig })
-      .pipe(
-        take(1),
-        catchError((error) => {
-          if (error.status === 401) {
-            return this.refreshToken({
-              refreshToken: this.storageService.getItemFromStorage<string>(
-                REFRESH_STORAGE_TOKEN
-              )!,
-              expiresInMins: 1,
-            }).pipe(
-              tap((response) => {
-                this.storageService.setItemOnStorage(
-                  STORAGE_TOKEN,
-                  response.token
-                );
-                this.storageService.setItemOnStorage(
-                  REFRESH_STORAGE_TOKEN,
-                  response.refreshToken
-                );
-              })
-            );
-          } else {
-            return throwError(() => error);
-          }
-        }),
-        map(authResponseMapper)
-      );
+      .pipe(take(1), map(authResponseMapper));
   }
 
-  private refreshToken(
+  public refreshToken(
     refreshTokenRequest: RefreshTokenRequest
   ): Observable<LoginResponse> {
     return this.httpClient
