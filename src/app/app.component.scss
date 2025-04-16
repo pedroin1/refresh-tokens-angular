@@ -1,0 +1,66 @@
+@use "../styles/variables" as var;
+@use "../styles/colors" as c;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: var.$spacing-xxs;
+  padding: var.$spacing-xxs;
+
+  &__input {
+    width: 100%;
+    max-width: 220px;
+    height: 45px;
+    padding: var.$spacing-xxs;
+    border-radius: var.$spacing-xxs;
+    border: 1.5px solid c.$gray-dark;
+    outline: none;
+    box-shadow: 0px 0px 20px -18px;
+  }
+
+  &__button {
+    padding: var.$spacing-xs;
+    border-radius: var.$spacing-xs;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 20px -#{var.$spacing-md};
+    background-color: c.$primary-color;
+    color: c.$white;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background-color: c.$primary-dark;
+    }
+  }
+}
+.auth {
+  display: flex;
+  flex-direction: column;
+  gap: var.$spacing-xxs;
+  padding: var.$spacing-xxs;
+  width: fit-content;
+
+  &__text {
+    font-size: var.$font-size-lg;
+    line-height: var.$line-height-xs;
+    font-weight: 400;
+  }
+
+  &__button {
+    padding: var.$spacing-xs;
+    border-radius: var.$spacing-xs;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 20px -#{var.$spacing-md};
+    background-color: c.$secondary-color;
+    color: c.$white;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background-color: c.$secondary-dark;
+    }
+  }
+}
